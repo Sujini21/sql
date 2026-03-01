@@ -85,3 +85,4 @@ select bg,max(age) as 'max age',bg from patient group by bg having max(age)>40
 select p1.* from patient p1 where 3=( select
 count(distinct(p2.pid)) from patient p2 where
 p2.age>p1.age)
+
