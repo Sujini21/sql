@@ -1,11 +1,11 @@
 CREATE TABLE patient (
-    pid INT,
-    fname VARCHAR(50),
-    lname VARCHAR(50),
-    age INT,
-    bg VARCHAR(10)
- );
-INSERT INTO patient (pid, fname, lname, age, bg) VALUES
+pid INT,
+fname VARCHAR(50),
+lname VARCHAR(50),
+age INT,
+bg VARCHAR(10)
+);
+INSERT INTO patient(pid, fname, lname, age, bg) VALUES
 (1, 'madhava', 'reddy', 45, 'o+ve'),
 (2, 'abhinav', 'bandra', 45, 'o-ve'),
 (4, 'hari', 'kiran', 60, 'b-ve'),
@@ -16,41 +16,37 @@ INSERT INTO patient (pid, fname, lname, age, bg) VALUES
 (7, 'mahes%h', 'nambootri', 36, 'b+ve'),
 (8, 'rahul', 'kumar', 46, 'b-ve'),
 (9, 'bharat', 'kumar', 56, 'b-ve');
-select* from patient;
-
-
-select concat(fname,lname) as 'full name', age
-from patient
-order by age;
-select fname, age
-from patient
-order by concat('Hello', fname, lname) desc;
-
-
-select distinct fname, age from patient;
-select distinct age, bg from patient;
-select distinct fname, age, bg
-from patient
-order by bg desc;
-
-
-
-select * from patient where age>45;
-select * from patient where age>=40 and age<=50;
-select * from patient where age>40 and bg!='o+ve';
-
-
-SELECT bg, COUNT(*) AS count
+Select *from patient;
+Order By Lab-1
+1.SELECT CONCAT(fname,lname) AS `full name`, age
 FROM patient
-GROUP BY bg;
-
-select max(age) as 'max age',bg from patient group by bg
-select lname,MIN(age) from patient group by bg,lname
-select bg,max(age) as 'max age',bg from patient group by bg having max(age)>40
-
-
-
-
-select p1.* from patient p1 where 3=( select
-count(distinct(p2.pid)) from patient p2 where
-p2.age>p1.age)
+ORDER BY age;
+2.SELECT fname, lname, bg
+FROM patient
+ORDER BY bg DESC;
+3.SELECT fname, lname, pid
+FROM patient
+ORDER BY lname, fname DESC;
+Order By Lab-2
+1.SELECT fname, age
+FROM patient
+ORDER BY CONCAT('Hello',fname,lname) DESC;
+2.SELECT *
+FROM patient
+ORDER BY age DESC;
+Distinct lab1
+1.SELECT DISTINCT fname, age
+FROM patient;
+2.SELECT DISTINCT age, bg
+FROM patient;
+3.SELECT DISTINCT fname, age, bg
+FROM patient
+ORDER BY bg DESC;
+Limit clause lab1
+1.SELECT fname, lname, age 
+FROM patient 
+LIMIT 3;
+2.SELECT * 
+FROM patient
+ORDER BY age DESC
+LIMIT 3;
