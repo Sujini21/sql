@@ -50,3 +50,38 @@ LIMIT 3;
 FROM patient
 ORDER BY age DESC
 LIMIT 3;
+select concat(fname,lname) as 'full name', age
+from patient
+order by age;
+select fname, age
+from patient
+order by concat('Hello', fname, lname) desc;
+
+
+select distinct fname, age from patient;
+select distinct age, bg from patient;
+select distinct fname, age, bg
+from patient
+order by bg desc;
+
+
+
+select * from patient where age>45;
+select * from patient where age>=40 and age<=50;
+select * from patient where age>40 and bg!='o+ve';
+
+
+SELECT bg, COUNT(*) AS count
+FROM patient
+GROUP BY bg;
+
+select max(age) as 'max age',bg from patient group by bg
+select lname,MIN(age) from patient group by bg,lname
+select bg,max(age) as 'max age',bg from patient group by bg having max(age)>40
+
+
+
+
+select p1.* from patient p1 where 3=( select
+count(distinct(p2.pid)) from patient p2 where
+p2.age>p1.age)
